@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './bootstrap.css';
 import './bootstrap.min.css';
 import './App.css';
-//<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 
 var poorDataBase = [
     { day:"poniedzialek",group:"grupa1",hour:"08:00 - 10:00",name:"Komponenty"},
@@ -12,17 +11,17 @@ var poorDataBase = [
     { day:"poniedzialek",group:"grupa3",hour:"08:00 - 10:00",name:"Systemy Wbudowane"},
     { day:"poniedzialek",group:"grupa4",hour:"08:00 - 10:00",name:"Java"},
     { day:"poniedzialek",group:"grupa1",hour:"10:00 - 12:00",name:"Cpłotek"},
-    { day:"poniedzialek",group:"grupa2",hour:"10:00 - 12:00",name:"Pytong"},
+    { day:"poniedzialek",group:"grupa2",hour:"10:00 - 12:00",name:"Python"},
     { day:"poniedzialek",group:"grupa3",hour:"10:00 - 12:00",name:"Cpłotek"},
-    { day:"poniedzialek",group:"grupa4",hour:"10:00 - 12:00",name:"Pytong"},
+    { day:"poniedzialek",group:"grupa4",hour:"10:00 - 12:00",name:"Python"},
 
     { day:"wtorek",group:"grupa1",hour:"08:00 - 10:00",name:"Lonuks"},
     { day:"wtorek",group:"grupa2",hour:"08:00 - 10:00",name:"Negocjacje"},
-    { day:"wtorek",group:"grupa3",hour:"08:00 - 10:00",name:"Sluchanie muzyki klasycznej"},
+    { day:"wtorek",group:"grupa3",hour:"08:00 - 10:00",name:"Muzyka klasyczna"},
     { day:"wtorek",group:"grupa4",hour:"08:00 - 10:00",name:"Algorytmy"},
     { day:"wtorek",group:"grupa1",hour:"10:00 - 12:00",name:"MVC"},
     { day:"wtorek",group:"grupa2",hour:"10:00 - 12:00",name:"ASI"},
-    { day:"wtorek",group:"grupa3",hour:"10:00 - 12:00",name:"Projetk zespolowy"},
+    { day:"wtorek",group:"grupa3",hour:"10:00 - 12:00",name:"Projekt zespolowy"},
     { day:"wtorek",group:"grupa4",hour:"10:00 - 12:00",name:"BTH"},
 
     { day:"sroda",group:"grupa1",hour:"08:00 - 10:00",name:"ASI"},
@@ -31,7 +30,7 @@ var poorDataBase = [
     { day:"sroda",group:"grupa4",hour:"08:00 - 10:00",name:"Komponenty"},
     { day:"sroda",group:"grupa1",hour:"10:00 - 12:00",name:"Systemy wbudowane"},
     { day:"sroda",group:"grupa2",hour:"10:00 - 12:00",name:"ASI"},
-    { day:"sroda",group:"grupa3",hour:"10:00 - 12:00",name:"Projetk zespolowy"},
+    { day:"sroda",group:"grupa3",hour:"10:00 - 12:00",name:"Projekt zespolowy"},
     { day:"sroda",group:"grupa4",hour:"10:00 - 12:00",name:"BTH"},
     
     { day:"czwartek",group:"grupa1",hour:"08:00 - 10:00",name:"Negocjacje"},
@@ -42,8 +41,6 @@ var poorDataBase = [
     { day:"czwartek",group:"grupa2",hour:"10:00 - 12:00",name:"GG"},
     { day:"czwartek",group:"grupa3",hour:"10:00 - 12:00",name:"BTH"},
     { day:"czwartek",group:"grupa4",hour:"10:00 - 12:00",name:"BSK"}
-
-
   ]
 
 
@@ -98,15 +95,15 @@ class Activities extends Component {
         <div>{this.props.children.group}</div>
         <div>{this.props.children.day}</div>
         <div>{this.props.children.hour}</div>
-        <button onClick={this.edit} className="btn-light" > Edit</button>
-        <button onClick={this.remove} className="btn-danger" > Remove</button>
+        <button onClick={this.edit} className="btn-light" > Edytuj</button>
+        <button onClick={this.remove} className="btn-danger" > Usun</button>
       </div>
     );
   }
 
   renderEdit = () => {
     return (
-      <div className="App">
+      <div className="App gather">
           <div>
          <input type="text" ref="name" placeholder="nazwa" defaultValue={this.props.children.name}></input>
         </div>
@@ -163,7 +160,6 @@ class Board extends Component {
 
   removeActivity = (i) => {
     let arr = this.state.DataBase;
-    console.log("noremove");
     arr.splice(i, 1)
     this.setState({DataBase: arr})
   }
@@ -198,7 +194,6 @@ class Board extends Component {
   }
 
   eachActivity = (activity, i) => {
-    //let activity = {day:day,group:group,hour:hour,name:name};
     return (
     <Activities key={i} index={i} updateActivity={this.updateActivity} deleteFromBoard={this.removeActivity}>
       {activity}
@@ -208,11 +203,11 @@ class Board extends Component {
 
   render = () => {
     return(
-      <div>
-        <div>
+      <div className="board-form">
+        <div className="board-form-child">
          <input type="text" ref="addname" placeholder="nazwa"></input>
         </div>
-        <div>
+        <div className="board-form-child">
           <select ref="addgroup">
             <option>grupa1</option>
             <option>grupa2</option>
@@ -220,7 +215,7 @@ class Board extends Component {
             <option>grupa4</option>
           </select>
         </div>
-        <div>
+        <div className="board-form-child">
           <select ref="addday">
             <option>poniedzialek</option>
             <option>wtorek</option>
@@ -229,7 +224,7 @@ class Board extends Component {
             <option>piatek</option>
           </select>
         </div>
-        <div>
+        <div className="board-form-child">
           <select ref="addhour">
           <option>08:00 - 10:00</option>
           <option>10:00 - 12:00</option>
@@ -238,8 +233,8 @@ class Board extends Component {
         </select>
           </div>
 
-        <div>
-          <button onClick={this.addNew} className="btn-info">Add New</button>
+        <div className="board-form-child">
+          <button onClick={this.addNew} className="btn-info">Dodaj</button>
         </div>
         <div className="board">
           {this.state.DataBase.map( this.eachActivity )}
@@ -254,7 +249,7 @@ const Header = (props) => {
       
       <nav className="navbar navbar-default">
               <div className="navbar-header">
-                  <ul className="nav navbar-nav">
+                  <ul className="nav">
                       <li><Link to="/" >Panel zarządzania</Link></li>
                       <li><Link to="/days" >Zajęcia w danym dniu</Link></li>   
                       <li><Link to="/groups" >Zajęcia dla danych grup</Link></li>
