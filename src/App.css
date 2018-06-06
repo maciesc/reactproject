@@ -1,0 +1,47 @@
+.App {
+  display: inline;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.col-half-offset{
+  margin-left:4.166666667%
+}
+
+.divbig{
+  width: 100%
+}
+
+.gather{
+  float: left;
+  margin: 30px 30px 0px 0px;
+  border-style: double;
+}
+
+.gatherv2{
+  margin: 30px 30px 0px 0px;
+  border-style: double;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
